@@ -905,13 +905,38 @@ function submitEnquiry() {
     if (!mobile) { alert("Please enter your Mobile Number!"); return; }
     if (course === "Select a course...") { alert("Please select a Course!"); return; }
 
-    var message = "🎓 *New Enquiry — IT Training & Placement Centre*%0A%0A"
-        + "👤 *Name:* " + name + "%0A"
-        + "📞 *Mobile:* " + mobile + "%0A"
-        + "📧 *Email:* " + email + "%0A"
-        + "📚 *Course:* " + course + "%0A"
-        + "📅 *Batch:* " + batch + "%0A%0A"
-        + "✅ Please contact this student!";
+    // Get current date and time
+    var now = new Date();
+    var dateStr = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear();
+    var timeStr = now.toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'});
+
+    var message = 
+        "━━━━━━━━━━━━━━━━━━━━━━%0A"
+      + "🎓 *NEW COURSE ENQUIRY*%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A%0A"
+      + "🏫 *IT Training %26 Placement Centre*%0A"
+      + "📍 Bengaluru | Online Available%0A%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A"
+      + "👤 *STUDENT DETAILS*%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A"
+      + "👤 *Name:*   " + name + "%0A"
+      + "📞 *Mobile:* " + mobile + "%0A"
+      + "📧 *Email:*  " + (email || "Not provided") + "%0A%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A"
+      + "📚 *COURSE DETAILS*%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A"
+      + "📚 *Course Interested:*%0A"
+      + "➡️  " + course + "%0A%0A"
+      + "📅 *Preferred Batch:*%0A"
+      + "➡️  " + (batch || "Not specified") + "%0A%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A"
+      + "🗓️ *Enquiry Date:* " + dateStr + "%0A"
+      + "⏰ *Time:* " + timeStr + "%0A"
+      + "━━━━━━━━━━━━━━━━━━━━━━%0A%0A"
+      + "⚡ *Action Required:*%0A"
+      + "Please call or WhatsApp this%0A"
+      + "student within 30 minutes! ✅%0A%0A"
+      + "📞 Call: " + mobile;
 
     var whatsappURL = "https://wa.me/919148831108?text=" + message;
     window.open(whatsappURL, "_blank");
